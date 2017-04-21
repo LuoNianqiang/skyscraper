@@ -1,152 +1,5 @@
 
-
 MySQL安装规范文档
-
- 
-
- 
-
- 
-
- 
-
- 
-
-
- 
-  
-  版本
-  
-  
-  V1.0
-  
- 
- 
-  
-  编辑人
-  
-  
-  罗年强
-  
- 
- 
-  
-  编辑日期
-  
-  
-  2017/3/6
-  
- 
-
-
- 
-
- 
-
-
- 
-  
-  修改日期
-  
-  
-  修改内容
-  
- 
- 
-  
-   
-  
-  
-   
-  
- 
- 
-  
-   
-  
-  
-   
-  
- 
- 
-  
-   
-  
-  
-   
-  
- 
- 
-  
-   
-  
-  
-   
-  
- 
- 
-  
-   
-  
-  
-   
-  
- 
- 
-  
-   
-  
-  
-   
-  
- 
- 
-  
-   
-  
-  
-   
-  
- 
- 
-  
-   
-  
-  
-   
-  
- 
- 
-  
-   
-  
-  
-   
-  
- 
- 
-  
-   
-  
-  
-   
-  
- 
- 
-  
-   
-  
-  
-   
-  
- 
-
-
- 
-
- 
-
- 
 
 1      MySQL二进制安装步骤
 
@@ -171,25 +24,16 @@ my.cnf
 1.2      安装步骤
 
 将安装包和脚本拷贝到指定目录下，假如指定目录为
-/software确认查看：ls  / software /   #保证安装包和脚本都在该目录下给脚本赋执行权限:#chmod +x 
-install_mysql_binary.sh
+/software确认查看：ls  / software /   #保证安装包和脚本都在该目录下给脚本赋执行权限:
+#chmod +x install_mysql_binary.sh
 
+# chmod +x uninstall_mysql.sh
 
-
-
-
-
-
-    # chmod +x 
-uninstall_mysql.sh
-
-执行脚本：#./install_mysql_binary.sh        #如需卸载执行./ uninstall_mysql.sh
-
-
+执行脚本：
+#./install_mysql_binary.sh       
+#如需卸载执行./ uninstall_mysql.sh
 
 注意：如要对MySQL安装如下路径进行调整，请编辑install_mysql_binary.sh
-
-
 
 1.3      用户密码设置修改
 
@@ -232,8 +76,6 @@ OPTION;
 1.5      注意事项
 
 安装前首先确认将要使用的端口有没有被占用：#ps -ef|grep $port所有操作必须在root用户下进行
-
-
 
 
 
