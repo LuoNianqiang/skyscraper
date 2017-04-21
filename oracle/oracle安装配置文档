@@ -161,15 +161,15 @@ oracle:oinstall /opt/oracle
 # chmod -R
 775 /opt/oracle
 
-3.1.2     对文件系统/opt/oraInventory并赋权
+3.1.2     对文件系统/opt/oracle/oraInventory并赋权
 
 【命令】
 
-# mkdir /opt/oraInventory
+# mkdir /opt/oracle/oraInventory
 
-# chown -R oracle:oinstall /opt/oraInventory
+# chown -R oracle:oinstall /opt/oracle/oraInventory
 
-# chmod -R 775 /opt/oraInventory
+# chmod -R 775 /opt/oracle/oraInventory
 
 
 
