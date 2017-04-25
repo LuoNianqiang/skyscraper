@@ -1,0 +1,11 @@
+如果只是key的话，就是普通索引。  
+mysql的key和index多少有点令人迷惑，单独的key和其它关键词结合的key(primary key)实际表示的意义是不同，这实际上考察对数据库体系结构的了解的。
+1 key 是数据库的物理结构，它包含两层意义和作用，一是约束（偏重于约束和规范数据库的结构完整性），二是索引（辅助查询用的）。包括primary key, unique key, foreign key 等。primary key 有两个作用，一是约束作用（constraint），用来规范一个存储主键和唯一性，但同时也在此key上建立了一个index；unique key 也有两个作用，一是约束作用（constraint），规范数据的唯一性，但同时也在这个key上建立了一个index；foreign key也有两个作用，一是约束作用（constraint），规范数据的引用完整性，但同时也在这个key上建立了一个index；可见，mysql的key是同时具有constraint和index的意义，这点和其他数据库表现的可能有区别。（至少在oracle上建立外键，不会自动建立index），因此创建key也有如下几种方式：
+（1）在字段级以key方式建立， 如 create table t (id int not null primary key);
+（2）在表级以constraint方式建立，如create table t(id int, CONSTRAINT pk_t_id PRIMARY key (id));
+（3）在表级以key方式建立，如create table t(id int, primary key (id));其它key创建类似，但不管那种方式，既建立了constraint，又建立了index，只不过index使用的就是这个constraint或key。
+2 index是数据库的物理结构，它只是辅助查询的，它创建时会在另外的表空间（mysql中的innodb表空间）以一个类似目录的结构存储。索引要分类的话，分为前缀索引、全文本索引等；因此，索引只是索引，它不会去约束索引的字段的行为（那是key要做的事情）。如，create table t(id int, index inx_tx_id  (id));
+3 总结，最后的释疑：
+（1）我们说索引分类，分为主键索引、唯一索引、普通索引(只有这一种才是纯粹的index)等，也是基于是不是把index看作了key。比如 create table t(id int, unique index inx_tx_id  (id));  --index当作了key使用
+（2）最重要的也就是，不管如何描述，理解index是纯粹的index，还是被当作key，当作key时则会有两种意义或起两种作用。
+一个是数据库逻辑层（KEY）的东西，一个是实现层（INDEX）的。key有两个核心属性：1 是键约束 2 是索引key的索引是通过index来实现的。实际应用中如果没有涉及字段间的约束，二者的作用是一样的。
