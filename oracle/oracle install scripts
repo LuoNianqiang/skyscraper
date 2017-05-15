@@ -67,8 +67,8 @@ echo $DISPLAY
 ## 复制并修改db_install.rsp
 cp database/response/db_install.rsp  db_install.rsp
 chown oracle:oinstall db_install.rsp
-su – oracle
 chmod 700 db_install.rsp
+su – oracle
 vim db_install.rsp
 
 oracle.install.option=INSTALL_DB_SWONLY 
