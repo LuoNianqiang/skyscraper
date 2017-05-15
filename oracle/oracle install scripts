@@ -105,6 +105,18 @@ exit
 cp database/response/dbca.rsp dbca.rsp
 chown  oracle:oinstall dbca.rsp
 su - oracle
+
+RESPONSEFILE_VERSION = "11.2.0"  //不能更改 
+OPERATION_TYPE = "createDatabase" 
+GDBNAME="STDDB" //全局数据库的名字=SID+主机域名，这里我设置为: 
+STDDB SID="STDDB" //数据库的SID，这个比较重要，我第一次安装时就是因为这个问题无法使用，这里我修改为：STDDB 
+TEMPLATENAME = "General_Purpose.dbc" //建库用的模板文件 
+SYSPASSWORD="cc08CC08"    //SYS用户的初始密码，我设置为cc08CC08
+SYSTEMPASSWORD="cc08CC08"    //SYSTEM用户的初始密码我设置为cc08CC08
+DATAFILEDESTINATION =/data/u01/oracle/oradata //数据文件存放目录 
+RECOVERYAREADESTINATION=/data/u01/oracle/oradata_backup //恢复数据存放目录 
+CHARACTERSET="ZHS16GBK" //数据库字符集,重要!!!! 建库后一般不能更改（中文为 ZHS16GBK） 
+AUTOMATICMEMORYMANAGEMENT= "FALSE"  //oracle内存800MB
 $ORACLE_HOME/bin/dbca -silent -responseFile /data/software/dbca.rsp
 ### 19. 修改oracle启动配置文件:/etc/oratab
 vim /etc/oratab
